@@ -88,11 +88,11 @@ def showcolledg():
 id=7
 alias="/getpage" +str(id)
 
-@app.route(alias)
-def getpage(id=6):
+@app.route("/getpage<page_id>")
+def getpage(page_id):
     try:
         colledg = DatabaseManager('colledg3.db')
-        listuser = colledg.fetchall(f"SELECT * FROM Colldgs WHERE id=={id}")
+        listuser = colledg.fetchall(f"SELECT * FROM Colldgs WHERE id=={page_id}")
         print(listuser)
     except:
         listuser = [('В базе', 'нет', 'пользователей')]
