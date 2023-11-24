@@ -39,7 +39,7 @@ def addcolledg():
               '< a href="mailto:post@jpsped.elcom.ru" > post@jpsped.elcom.ru < / a >',
               'https://навигатор.владпрофобр.рф/assets/img/colledg/yupigk.jpg')
     colledg.query('''CREATE TABLE IF NOT EXISTS Colldgs(id int auto_increment primary key, title text, full_name text,addres text, tel text, email text, link_to_pict text)''')
-    colledg.query('''INSERT INTO Colldgs VALUES(title, full_name, addres, tel, email, link_to_pict)''', testinfo)
+    colledg.query('''INSERT INTO Colldgs(title, full_name, addres, tel, email, link_to_pict) VALUES (?, ?, ?, ?, ?, ?)''', testinfo)
     return render_template('read_form.html')
 
 
