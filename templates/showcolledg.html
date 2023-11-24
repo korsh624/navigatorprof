@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% block title %}
+Заказы
+{% endblock %}
+{% block body %}
+<div class="container mt-5">
+
+    {% for el in  listuser %}
+        <div class="alert alert-info">
+            {{el[0]}} {{el[1]}} {{el[2]}}
+        </div>
+    {% endfor %}
+   
+    
+</div>
+{% endblock %}

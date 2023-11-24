@@ -42,6 +42,25 @@ def addcolledg():
     colledg.query('''INSERT INTO Colldgs(title, full_name, addres, tel, email, link_to_pict) VALUES (?, ?, ?, ?, ?, ?)''', testinfo)
     return render_template('read_form.html')
 
+@app.route("/formcolledg", methods=['POST'])
+def formcolledg():
+    colledg = DatabaseManager("colledg3.db")
+    colledgs=request.form
+    title=colledgs['title']
+    full_name = colledgs['full_name']
+    addres = colledgs['addres']
+    tel = colledgs['tel']
+    email = colledgs['userEmail']
+    link_to_pict = colledgs['link_to_pict']
+    info=(title,full_name,addres,tel,email,link_to_pict)
+    colledg.query(
+        '''INSERT INTO Colldgs(title, full_name, addres, tel, email, link_to_pict) VALUES (?, ?, ?, ?, ?, ?)''', info)
+    return render_template('read_form.html')
+
+@app.route("/additem")
+def additem():
+    return render_template('additem.html')
+
 
 
 @app.route("/show")
@@ -53,6 +72,20 @@ def show():
     except:
         listuser=[('В базе','нет','пользователей')]
     return render_template('show.html', listuser=listuser)
+
+
+
+@app.route("/showcolledg")
+def showcolledg():
+    try:
+        colledg = DatabaseManager('colledg3.db')
+        listuser=colledg.fetchall("""SELECT * FROM Colldgs""")
+        print(listuser)
+    except:
+        listuser=[('В базе','нет','пользователей')]
+    return render_template('showcolledg.html', listuser=listuser)
+
+
 
 
 if __name__=="__main__":
