@@ -21,6 +21,10 @@ def form():
 def test():
     return render_template('test.html')
 
+@app.route("/testpages")
+def testpages():
+    return render_template('testpages.html')
+
 @app.route("/read_form", methods=['POST'])
 def read_form():
     users = DatabaseManager('users.db')
@@ -87,8 +91,9 @@ def showcolledg():
         listuser=[('В базе','нет','пользователей')]
     return render_template('showcolledg.html', listuser=listuser)
 
-id=7
-alias="/getpage" +str(id)
+
+
+
 
 @app.route("/getpage<page_id>")
 def getpage(page_id):
