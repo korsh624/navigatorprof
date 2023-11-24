@@ -85,6 +85,18 @@ def showcolledg():
         listuser=[('В базе','нет','пользователей')]
     return render_template('showcolledg.html', listuser=listuser)
 
+id=7
+alias="/getpage" +str(id)
+
+@app.route(alias)
+def getpage(id=6):
+    try:
+        colledg = DatabaseManager('colledg3.db')
+        listuser = colledg.fetchall(f"SELECT * FROM Colldgs WHERE id=={id}")
+        print(listuser)
+    except:
+        listuser = [('В базе', 'нет', 'пользователей')]
+    return render_template('showcolledg.html', listuser=listuser)
 
 
 
