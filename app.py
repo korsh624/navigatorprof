@@ -16,6 +16,11 @@ def allinfo():
 def form():
     return render_template('form.html')
 
+
+@app.route("/test")
+def test():
+    return render_template('test.html')
+
 @app.route("/read_form", methods=['POST'])
 def read_form():
     users = DatabaseManager('users.db')
@@ -29,22 +34,19 @@ def read_form():
     return render_template('read_form.html')
 
 
-@app.route("/addcolledg")
-def addcolledg():
-    colledg=DatabaseManager("colledg3.db")
-    testinfo=("Юрьев-Польский индустриально-гуманитарный колледж",
-              'Государственное бюджетное профессиональное образовательное учреждение Владимирской области "Юрьев-Польский индустриально-гуманитарный колледж"',
-             '601800, г. Юрьев-Польский, пл. Советская, д. 5',
-             '<a href="tel:+74924622660">8 (49246) 2-26-60</a>',
-              '< a href="mailto:post@jpsped.elcom.ru" > post@jpsped.elcom.ru < / a >',
-              'https://навигатор.владпрофобр.рф/assets/img/colledg/yupigk.jpg')
-    colledg.query('''CREATE TABLE IF NOT EXISTS Colldgs(id int auto_increment primary key, title text, full_name text,addres text, tel text, email text, link_to_pict text)''')
-    colledg.query('''INSERT INTO Colldgs(title, full_name, addres, tel, email, link_to_pict) VALUES (?, ?, ?, ?, ?, ?)''', testinfo)
-    return render_template('read_form.html')
-
 @app.route("/formcolledg", methods=['POST'])
 def formcolledg():
-    colledg = DatabaseManager("colledg3.db")
+    colledg = DatabaseManager("colledgs.db")
+    colledg.query("""CREATE TABLE IF NOT EXISTS Colldgs(
+	"id"	INTEGER UNIQUE,
+	"title"	text,
+	"full_name"	text,
+	"addres"	text,
+	"tel"	text,
+	"email"	text,
+	"link_to_pict"	text,
+	PRIMARY KEY("id" AUTOINCREMENT)
+);""")
     colledgs=request.form
     title=colledgs['title']
     full_name = colledgs['full_name']
@@ -78,7 +80,7 @@ def show():
 @app.route("/showcolledg")
 def showcolledg():
     try:
-        colledg = DatabaseManager('colledg3.db')
+        colledg = DatabaseManager('colledgs.db')
         listuser=colledg.fetchall("""SELECT * FROM Colldgs""")
         print(listuser)
     except:
@@ -91,12 +93,12 @@ alias="/getpage" +str(id)
 @app.route("/getpage<page_id>")
 def getpage(page_id):
     try:
-        colledg = DatabaseManager('colledg3.db')
+        colledg = DatabaseManager('colledgs.db')
         listuser = colledg.fetchall(f"SELECT * FROM Colldgs WHERE id=={page_id}")
         print(listuser)
     except:
-        listuser = [('В базе', 'нет', 'пользователей')]
-    return render_template('showcolledg.html', listuser=listuser)
+        return render_template("error.html")
+    return render_template('test.html', listuser=listuser)
 
 
 
