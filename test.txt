@@ -1,0 +1,19 @@
+
+
+
+
+
+<!--  <link rel="stylesheet" href="{{ url_for('static',filename='assets/vendor/aos/aos.css') }}">-->
+<!--  <link rel="stylesheet" href="{{ url_for('static',filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}">-->
+<!--  <link rel="stylesheet" href="{{ url_for('static',filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}">-->
+<!--  <link rel="stylesheet" href="{{ url_for('static',filename='assets/vendor/boxicons/css/boxicons.min.css') }}">-->
+<!--  <link rel="stylesheet" href="{{ url_for('static',filename='assets/vendor/remixicon/remixicon.css') }}">-->
+<!--  <link rel="stylesheet" href="{{ url_for('static',filename='assets/vendor/swiper/swiper-bundle.min.css') }}">-->
+  <!-- Template Main CSS File -->
+
+  <!-- =======================================================
+  * Template Name: Arsha - v4.11.0
+  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->

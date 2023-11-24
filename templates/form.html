@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% block title %}
+Форма для отправки данных
+{% endblock %}
+{% block body %}
+    <form action="{{ url_for('read_form')}}" method="post">
+                <label for="email" class="form-label">Email address</label>
+                <input name="userEmail" type="email" class="form-control" id="email">
+                <label for="name" class="form-label">Имя</label>
+                <input name="name" type="text" class="form-control" id="name">
+                <label for="lastname" class="form-label">Фамилия</label>
+                <input name="lastname" class="form-control" id="lastname">
+                </br>
+                </br>
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </form>
+{% endblock %}
